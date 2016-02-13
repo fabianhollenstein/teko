@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+<!--     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" /> -->
+
+
+<h:head />
+<body>
+
+	<ui:composition template="template.xhtml">
+
+
+		<ui:define name="title">
+        	Vorgehensmodell
+    	</ui:define>
+		<ui:define name="content">
+			<div id="page-wrapper">
+				<h:form role="form" id="vorgehensmodellForm" class="form-horizontal" method="post">
+
+					<h:column>
+						<label>Vorgehensmodell</label>
+					</h:column>
+					<h:column>
+						<h:inputText value="#{vorgehensmodellToEdit.name}" />
+					</h:column>
+				    
+				    <h:dataTable id="phasen" value="#{vorgehensmodellToEdit.phasen}" var="phase">
+					 
+					 	<h:column>
+							<label>Phase</label>
+						</h:column>
+				        <h:column>
+				            <h:inputText value="#{phase.name}" />
+				        </h:column>
+				        <h:column>
+							<label>Sequenz</label>
+						</h:column>
+						
+				        <h:column>
+				            <h:inputText value="#{phase.sequenz}">
+				             <f:convertNumber integerOnly="true"/>
+				            </h:inputText>
+				        </h:column>
+
+				        <h:column>
+				            <h:commandButton value="Remove">
+				                <f:ajax listener="#{vorgehensmodellToEdit.onButtonRemoveFieldClick(phase)}" execute="@form" render="@form" /> 
+				            </h:commandButton>
+				        </h:column>
+    				</h:dataTable>
+
+					<h:column>
+				   		<h:commandButton value="Add">
+				     	   <f:ajax listener="#{vorgehensmodellToEdit.onButtonAddFieldClick}" execute="@form" render="@form" /> 
+				    	</h:commandButton>
+					</h:column>
+					<h:column>
+						<h:commandButton action="#{vorgehensmodellService.save(vorgehensmodellToEdit)}" value="speichern" update=":vorgehensmodellForm"/>
+					</h:column>
+					
+
+				</h:form>
+				
+				<div>---------------------------------------------------------------</div>
+				<ui:repeat var="vorgehensmodell" value="#{vorgehensmodellService.all}">
+					<div>
+						<label>Vorgehensmodell</label>
+					
+					
+						<h:outputText value="#{vorgehensmodell.name}" />
+						
+						
+					
+					
+					
+					</div>	
+				</ui:repeat>
+				
+			</div>
+		</ui:define>
+			
+
+
+</ui:composition>
+	
+	
+
+</body>
+
+</html>
