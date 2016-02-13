@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
@@ -25,16 +26,16 @@
     	</ui:define>
 		<ui:define name="content">
 			<div id="page-wrapper">
-				<h:form role="form" id="vorgehensmodellForm" class="form-horizontal" method="post">
-
-					<h:column>
-						<label>Vorgehensmodell</label>
-					</h:column>
-					<h:column>
-						<h:inputText value="#{vorgehensmodellToEdit.name}" />
-					</h:column>
+			<!-- Start test -->
+			<h:form role="form" id="test" class="form-horizontal" method="post">
+					
+					<div>
+						<label>Vorgehensmodell </label>
+						<h:inputText value="#{formVorgehensmodell.vorgehensmodell.name}" />
+					
+				    </div>
 				    
-				    <h:dataTable id="phasen" value="#{vorgehensmodellToEdit.phasen}" var="phase">
+				    <h:dataTable id="phasenFormVorgehensmodell" value="#{formVorgehensmodell.vorgehensmodell.phasen}" var="phase">
 					 
 					 	<h:column>
 							<label>Phase</label>
@@ -54,36 +55,47 @@
 
 				        <h:column>
 				            <h:commandButton value="Remove">
-				                <f:ajax listener="#{vorgehensmodellToEdit.onButtonRemoveFieldClick(phase)}" execute="@form" render="@form" /> 
+				            
+				                <f:ajax listener="#{formVorgehensmodell.vorgehensmodell.onButtonRemoveFieldClick(phase)}" execute="@form" render="@form" /> 
 				            </h:commandButton>
 				        </h:column>
     				</h:dataTable>
 
-					<h:column>
+					<div>
 				   		<h:commandButton value="Add">
-				     	   <f:ajax listener="#{vorgehensmodellToEdit.onButtonAddFieldClick}" execute="@form" render="@form" /> 
+				     	   <f:ajax listener="#{formVorgehensmodell.vorgehensmodell.onButtonAddFieldClick}" execute="@form" render="@form" /> 
 				    	</h:commandButton>
-					</h:column>
-					<h:column>
-						<h:commandButton action="#{vorgehensmodellService.save(vorgehensmodellToEdit)}" value="speichern" update=":vorgehensmodellForm"/>
-					</h:column>
 					
+					</div>
+					<div>
+					
+						<h:commandButton action="#{vorgehensmodellService.save(formVorgehensmodell.vorgehensmodell)}" value="speichern"/>
+					
+					</div>
 
 				</h:form>
-				
+			<!-- end test -->
+			
 				<div>---------------------------------------------------------------</div>
+				<h1>Alle bereits erfassten Vorgehensmodelle</h1>
 				<ui:repeat var="vorgehensmodell" value="#{vorgehensmodellService.all}">
+					<h:form role="form" id="vorgehensmodellFromDB" class="form-horizontal" method="post">
 					<div>
-						<label>Vorgehensmodell</label>
+						<label>Vorgehensmodell </label>
 					
-					
+						
 						<h:outputText value="#{vorgehensmodell.name}" />
-						
-						
+						<h:commandButton value="bearbeiten">
+							<f:ajax listener="#{formVorgehensmodell.setVorgehensmodell(vorgehensmodell)}" execute="@all" render="test" /> 
+							<!-- <f:ajax listener="" target="#{vorgehensmodellToEdit}" value="#{vorghensmodell}" /> -->
+						</h:commandButton>
+
+						<h:commandButton action="#{vorgehensmodellService.delete(vorgehensmodell)}" value="löschen"></h:commandButton>
 					
 					
 					
 					</div>	
+					</h:form>
 				</ui:repeat>
 				
 			</div>

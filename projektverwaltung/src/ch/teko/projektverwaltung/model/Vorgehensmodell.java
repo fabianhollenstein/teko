@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.persistence.CascadeType;
@@ -65,5 +64,10 @@ public class Vorgehensmodell implements Serializable{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+
+	public int getId() {
+		return id;
 	}
 }

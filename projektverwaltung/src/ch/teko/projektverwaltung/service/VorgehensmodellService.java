@@ -31,5 +31,9 @@ public class VorgehensmodellService {
 		return vorgehensmodellDAO.getAll();
 	}
 	
+	public void delete(Vorgehensmodell vorgehensmodell) {
+		vorgehensmodellDAO.delete(vorgehensmodell);
+	}
+	
 	
 }
