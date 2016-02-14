@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package ch.teko.projektverwaltung.dao;
 
 import java.io.IOException;
@@ -11,22 +14,40 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
 
-import ch.teko.projektverwaltung.model.Vorgehensmodell;
+import ch.teko.projektverwaltung.model.Funktion;
 
-public class VorgehensmodellDAO implements BaseDAO<Vorgehensmodell>{
-	public void save(Vorgehensmodell vorgehensmodell) {
+/**
+ * @author Fabian
+ *
+ */
+public class FunktionDAO implements BaseDAO<Funktion>{
+
+	@Override
+	public Funktion getById(int id) {
+				EntityManagerFactory factory = Persistence.createEntityManagerFactory("ProjektverwaltungEntityManager");
+				EntityManager entityManager = factory.createEntityManager();
+				
+//				entityManager.refresh(entity);
+				Funktion existingFunktion = entityManager.find(Funktion.class, id);
+				
+				//TODO close factory, close entityManager????
+				return existingFunktion;
+	}
+
+	@Override
+	public void save(Funktion funktion) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("ProjektverwaltungEntityManager");
 		EntityManager entityManager = factory.createEntityManager();
 		
-		Vorgehensmodell existingVorgehensmodell = entityManager.find(Vorgehensmodell.class, vorgehensmodell.getId());
+		Funktion existingFunktion = entityManager.find(Funktion.class, funktion.getId());
 		entityManager.getTransaction().begin();
-		if(existingVorgehensmodell != null) {
+		if(existingFunktion != null) {
 			//update
-			entityManager.merge(vorgehensmodell);
+			entityManager.merge(funktion);
 			
 		} else {
 			//create
-			entityManager.persist(vorgehensmodell);
+			entityManager.persist(funktion);
 		}
 		
 		entityManager.flush();
@@ -41,30 +62,18 @@ public class VorgehensmodellDAO implements BaseDAO<Vorgehensmodell>{
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-
+		}	
+		
 		
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<Vorgehensmodell> getAll() {
+	@Override
+	public void delete(Funktion funktion) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("ProjektverwaltungEntityManager");
 		EntityManager entityManager = factory.createEntityManager();
-		Query query = entityManager.createQuery("FROM Vorgehensmodell");
-		List<Vorgehensmodell> vorgehensmodellList = (List<Vorgehensmodell>) query.getResultList();
-		return vorgehensmodellList;
-		
-	}
-
-	public void delete(Vorgehensmodell vorgehensmodell) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("ProjektverwaltungEntityManager");
-		EntityManager entityManager = factory.createEntityManager();
-//		entityManager.remove(vorgehensmodell);
-//		Query query = entityManager.createQuery("DELETE Vorgehensmodell where id = :id");
-//		query.setParameter("id", vorgehensmodell);
 		
 		
-		Vorgehensmodell toDelete = entityManager.find(Vorgehensmodell.class, vorgehensmodell.getId());
+		Funktion toDelete = entityManager.find(Funktion.class, funktion.getId());
 		 
 		entityManager.getTransaction().begin();
 		entityManager.remove(toDelete);
@@ -81,22 +90,18 @@ public class VorgehensmodellDAO implements BaseDAO<Vorgehensmodell>{
 			e.printStackTrace();
 		}
 
+		
+		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public Vorgehensmodell getById(int id) {
-		// TODO Auto-generated method stub
+	public List<Funktion> getAll() {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("ProjektverwaltungEntityManager");
 		EntityManager entityManager = factory.createEntityManager();
-		
-//		entityManager.refresh(entity);
-		Vorgehensmodell existingVorgehensmodell = entityManager.find(Vorgehensmodell.class, id);
-		
-		//TODO close factory, close entityManager????
-		return existingVorgehensmodell;
+		Query query = entityManager.createQuery("FROM Funktion");
+		List<Funktion> funktionList = (List<Funktion>) query.getResultList();
+		return funktionList;
 	}
-
-
-
 
 }

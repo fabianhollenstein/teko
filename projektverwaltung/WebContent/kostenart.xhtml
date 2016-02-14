@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+<!--     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" /> -->
+
+
+<h:head />
+<body>
+
+	<ui:composition template="template.xhtml">
+
+
+		<ui:define name="title">
+        	Kostenart
+    	</ui:define>
+		<ui:define name="content">
+			<div id="page-wrapper">
+				<!-- Start test -->
+				<div class="row">
+					<div class="col-lg-12">
+	                    <h1 class="page-header"> Kostenarten verwalten</h1>
+	                </div>
+	             </div>
+	                <div class="row">
+	                	<div class="col-lg-12">
+	                		<div class="panel panel-default">
+	                			<div class="panel-heading">
+	                				Kostenarten erfassen/bearbeiten
+	                			</div>
+	                			<div class="panel-body">
+	                				<div class="row">
+	                					<div class="col-lg-6">
+	                						<h:form id="kostenartForm" role="form" class="" method="post">
+	                							<div class="form-group" >
+	                                            	<label>Kostenart</label>
+	                                            	<h:inputText id="kostenart" value="#{formKostenart.kostenart.name}" styleClass="form-control" required="true" requiredMessage="Bitte Eine Kostenart eingeben"/>
+										
+													<div class="">
+														<h:message style="display:block;" for="kostenart" errorClass="alert alert-danger"/>
+													</div>
+                                           
+                                        		</div>
+                                        		
+													
+													<h:button value="Reset" styleClass="btn btn-default"/>
+													<h:commandButton action="#{kostenartService.save(formKostenart.kostenart)}" value="speichern" styleClass="btn btn-default"/>
+								
+												
+	                						</h:form>
+	                					</div>
+	                					<div class="col-lg-6">
+	                					</div>
+	                				</div>
+	                			</div>
+	                		</div>
+	                	</div>
+	                </div>
+			
+				<div>---------------------------------------------------------------</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+                    	<h1> Bereits erfasste Kostenarten</h1>
+                    </div>
+					<div class="panel-body">
+						<h:form role="form" id="kostenartenFromDB" class="form-horizontal" method="post">
+							<h:dataTable var="kostenart" value="#{kostenartService.all}" styleClass="table table-striped table-bordered table-hover">
+								
+								<h:column>
+							        <f:facet name="header">Kostenart</f:facet>
+							        <h:outputText value="#{kostenart.name}" />
+							        
+							    </h:column>
+								<h:column>
+							        <f:facet name="header">action</f:facet>
+							        <h:commandButton value="bearbeiten" styleClass="btn btn-primary">
+										<f:ajax listener="#{formKostenart.setKostenart(kostenart)}" execute="@all" render="kostenartForm" /> 
+									</h:commandButton>
+									<h:commandButton action="#{kostenartService.delete(kostenart)}" value="löschen" styleClass="btn btn-danger">
+									
+									</h:commandButton>
+							    </h:column>
+							
+							</h:dataTable>
+						</h:form>
+					</div>
+				</div>
+			</div><!-- end PageWrapper -->
+		</ui:define><!-- end content -->
+			
+
+
+</ui:composition>
+	
+	
+
+</body>
+
+</html>

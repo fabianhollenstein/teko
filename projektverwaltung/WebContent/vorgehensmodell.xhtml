@@ -26,80 +26,100 @@
     	</ui:define>
 		<ui:define name="content">
 			<div id="page-wrapper">
-			<!-- Start test -->
-			<h:form role="form" id="test" class="form-horizontal" method="post">
-					
-					<div>
-						<label>Vorgehensmodell </label>
-						<h:inputText value="#{formVorgehensmodell.vorgehensmodell.name}" />
-					
-				    </div>
-				    
-				    <h:dataTable id="phasenFormVorgehensmodell" value="#{formVorgehensmodell.vorgehensmodell.phasen}" var="phase">
-					 
-					 	<h:column>
-							<label>Phase</label>
-						</h:column>
-				        <h:column>
-				            <h:inputText value="#{phase.name}" />
-				        </h:column>
-				        <h:column>
-							<label>Sequenz</label>
-						</h:column>
-						
-				        <h:column>
-				            <h:inputText value="#{phase.sequenz}">
-				             <f:convertNumber integerOnly="true"/>
-				            </h:inputText>
-				        </h:column>
-
-				        <h:column>
-				            <h:commandButton value="Remove">
-				            
-				                <f:ajax listener="#{formVorgehensmodell.vorgehensmodell.onButtonRemoveFieldClick(phase)}" execute="@form" render="@form" /> 
-				            </h:commandButton>
-				        </h:column>
-    				</h:dataTable>
-
-					<div>
-				   		<h:commandButton value="Add">
-				     	   <f:ajax listener="#{formVorgehensmodell.vorgehensmodell.onButtonAddFieldClick}" execute="@form" render="@form" /> 
-				    	</h:commandButton>
-					
+				<!-- Start test -->
+				<div class="panel panel-default">
+	            	<div class="panel-heading">
+	          		      Vorgehensmodell erfassen/bearbeiten
+	                </div>
+					<div class="panel-body">
+						<h:form role="form" id="test" class="form-horizontal" method="post">
+								<div class="">
+									<label>Name Vorgehensmodell </label><span> </span>
+									<h:inputText id="nameVorgehensmodell" value="#{formVorgehensmodell.vorgehensmodell.name}" styleClass="form-control" required="true" requiredMessage="Bitte Einen Namen eingeben"/>
+									
+									<div class="">
+										<h:message style="display:block;" for="nameVorgehensmodell" errorClass="alert alert-danger"/>
+									</div>
+							    </div>
+							    <br />
+							    <h:dataTable id="phasenFormVorgehensmodell" value="#{formVorgehensmodell.vorgehensmodell.phasen}" var="phase" styleClass="table table-striped table-bordered table-hover">	
+								 	<h:column>
+								 	<!-- column header -->
+			    						<f:facet name="header">Phase</f:facet>
+							            <h:inputText id="phaseName" value="#{phase.name}" styleClass="form-control"  required="true" requiredMessage="Bitte Eine Phase eingeben"/>
+							        	<div class="">
+										<h:message style="display:block;" for="phaseName" errorClass="alert alert-danger"/>
+									</div>
+							        </h:column>
+							        <h:column>
+										<f:facet name="header">Sequenz</f:facet>
+							            <h:inputText value="#{phase.sequenz}" styleClass="form-control">
+							             	<f:convertNumber integerOnly="true"/>
+							            </h:inputText>
+							        </h:column>
+			
+							        <h:column>
+							        <f:facet name="header">action</f:facet>
+							            <h:commandButton value="Remove" styleClass="btn btn-danger">
+							            
+							                <f:ajax listener="#{formVorgehensmodell.vorgehensmodell.onButtonRemoveFieldClick(phase)}" execute="@form" render="@form" /> 
+							            </h:commandButton>
+							        </h:column>
+			    				</h:dataTable>
+			
+								<div>
+								
+							   		<h:commandButton value="Add Phase" styleClass="btn btn-primary">
+							     	   <f:ajax listener="#{formVorgehensmodell.vorgehensmodell.onButtonAddFieldClick}" execute="@form" render="@form" /> 
+							    	</h:commandButton>
+								
+								</div>
+								<label></label>
+								<div>
+									<h:button value="Reset" styleClass="btn btn-default"/>
+									<h:commandButton action="#{vorgehensmodellService.save(formVorgehensmodell.vorgehensmodell)}" value="speichern" styleClass="btn btn-default"/>
+								
+								</div>
+			
+							</h:form>
+						</div>
 					</div>
-					<div>
-					
-						<h:commandButton action="#{vorgehensmodellService.save(formVorgehensmodell.vorgehensmodell)}" value="speichern"/>
-					
-					</div>
-
-				</h:form>
 			<!-- end test -->
 			
 				<div>---------------------------------------------------------------</div>
-				<h1>Alle bereits erfassten Vorgehensmodelle</h1>
-				<ui:repeat var="vorgehensmodell" value="#{vorgehensmodellService.all}">
-					<h:form role="form" id="vorgehensmodellFromDB" class="form-horizontal" method="post">
-					<div>
-						<label>Vorgehensmodell </label>
-					
-						
-						<h:outputText value="#{vorgehensmodell.name}" />
-						<h:commandButton value="bearbeiten">
-							<f:ajax listener="#{formVorgehensmodell.setVorgehensmodell(vorgehensmodell)}" execute="@all" render="test" /> 
-							<!-- <f:ajax listener="" target="#{vorgehensmodellToEdit}" value="#{vorghensmodell}" /> -->
-						</h:commandButton>
-
-						<h:commandButton action="#{vorgehensmodellService.delete(vorgehensmodell)}" value="löschen"></h:commandButton>
-					
-					
-					
-					</div>	
-					</h:form>
-				</ui:repeat>
-				
+				<div class="panel panel-default">
+					<div class="panel-heading">
+                    	<h1> Bereits erfasste Vorgehensmodelle</h1>
+                    </div>
+					<div class="panel-body">
+						<h:form role="form" id="vorgehensmodellFromDB" class="form-horizontal" method="post">
+							<h:dataTable var="vorgehensmodell" value="#{vorgehensmodellService.all}" styleClass="table table-striped table-bordered table-hover">
+								
+								<h:column>
+							        <f:facet name="header">Vorgehensmodell</f:facet>
+							        <h:outputText value="#{vorgehensmodell.name}" />
+							    </h:column>
+								<h:column>
+							        <f:facet name="header">action</f:facet>
+							        <h:commandButton value="bearbeiten" styleClass="btn btn-primary">
+										<f:ajax listener="#{formVorgehensmodell.setVorgehensmodell(vorgehensmodell)}" execute="@all" render="test" /> 
+										<!-- <f:ajax listener="" target="#{vorgehensmodellToEdit}" value="#{vorghensmodell}" /> -->
+									</h:commandButton>
+									<h:commandButton action="#{vorgehensmodellService.delete(vorgehensmodell)}" value="löschen" styleClass="btn btn-danger">
+									
+									</h:commandButton>
+							    </h:column>
+<!-- 								<h:column>
+							        <f:facet name="header">action</f:facet>
+							        <h:commandButton action="#{vorgehensmodellService.delete(vorgehensmodell)}" value="löschen"></h:commandButton>
+							    </h:column> -->
+							
+							</h:dataTable>
+						</h:form>
+					</div>
+				</div>
 			</div>
-		</ui:define>
+		</ui:define><!-- end content -->
 			
 
 

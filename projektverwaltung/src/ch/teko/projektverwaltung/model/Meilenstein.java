@@ -1,0 +1,40 @@
+package ch.teko.projektverwaltung.model;
+
+import java.io.Serializable;
+import java.sql.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+//TODO how to use Meilenstein?
+@Entity
+public class Meilenstein implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5452290220589104070L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	
+	private Date datum;
+	private String name;
+	
+	public int getId() {
+		return id;
+	}
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+    
+
+}

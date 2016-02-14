@@ -146,14 +146,14 @@
                     <li class="#{request.requestURI eq '/projektverwaltung/vorgehensmodell.xhtml' ? 'active' : ''}">
                         <a href="vorgehensmodell.xhtml"><i class="fa fa-fw fa-bar-chart-o"></i> Vorgehensmodell</a>
                     </li>
-                    <li class="#{view.viewId eq '/index.xhtml' ? 'active' : ''}">
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                    <li class="#{request.requestURI eq '/projektverwaltung/mitarbeiter.xhtml' ? 'active' : ''}">
+                        <a href="mitarbeiter.xhtml"><i class="fa fa-fw fa-table"></i> Mitarbeiter</a>
                     </li>
-                    <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                    <li class="#{request.requestURI eq '/projektverwaltung/funktion.xhtml' ? 'active' : ''}">
+                        <a href="funktion.xhtml"><i class="fa fa-fw fa-edit"></i> Funktion</a>
                     </li>
-                    <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                    <li class="#{request.requestURI eq '/projektverwaltung/kostenart.xhtml' ? 'active' : ''}">
+                        <a href="kostenart.xhtml"><i class="fa fa-fw fa-desktop"></i> Kostenart</a>
                     </li>
                     <li>
                         <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>

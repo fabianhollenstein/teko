@@ -13,15 +13,6 @@ import ch.teko.projektverwaltung.model.Vorgehensmodell;
 public class VorgehensmodellService {
 
 	private VorgehensmodellDAO vorgehensmodellDAO = new VorgehensmodellDAO();
-	private Vorgehensmodell currentVorgehensmodell = new Vorgehensmodell();
-	
-	public Vorgehensmodell getCurrentVorgehensmodell() {
-		return currentVorgehensmodell;
-	}
-
-	public void setCurrentVorgehensmodell(Vorgehensmodell currentVorgehensmodell) {
-		this.currentVorgehensmodell = currentVorgehensmodell;
-	}
 
 	public void save(Vorgehensmodell toSave) {
 		vorgehensmodellDAO.save(toSave);
