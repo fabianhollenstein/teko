@@ -14,6 +14,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import ch.teko.projektverwaltung.dao.FunktionDAO;
@@ -37,7 +38,7 @@ public class Mitarbeiter implements Serializable{
 	private String vorname;
 	private String abteilung;
 	private String arbeitspensum;
-	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(fetch=FetchType.EAGER, cascade = CascadeType.MERGE)
 	private List<Funktion> funktionen = new ArrayList<Funktion>();
 	
 	public Mitarbeiter() {
