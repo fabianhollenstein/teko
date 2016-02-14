@@ -16,6 +16,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import ch.teko.projektverwaltung.dao.FunktionDAO;
+
 /**
  * @author Fabian
  *
@@ -36,12 +38,12 @@ public class Mitarbeiter implements Serializable{
 	private String abteilung;
 	private String arbeitspensum;
 	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<Funktion> funktionen;
+	private List<Funktion> funktionen = new ArrayList<Funktion>();
 	
 	public Mitarbeiter() {
-		funktionen = new ArrayList<Funktion>();
+		
 
-		funktionen.add(new Funktion());
+//		funktionen.add(new Funktion());
 	}
 	
 	public int getId() {
@@ -100,6 +102,15 @@ public class Mitarbeiter implements Serializable{
 	    
 	    public void onButtonAddFunktionClick(Funktion funktion)
 	    {
+	    	
+	        funktionen.add(funktion);
+	    }
+	    
+	    public void onButtonAddFunktionClick(String id)
+	    {
+	    	int idForDatabase = Integer.parseInt(id);
+	    			FunktionDAO dao = new FunktionDAO();
+	    			Funktion funktion = dao.getById(idForDatabase);
 	    	
 	        funktionen.add(funktion);
 	    }

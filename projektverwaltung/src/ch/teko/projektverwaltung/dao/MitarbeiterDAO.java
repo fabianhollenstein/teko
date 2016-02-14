@@ -44,7 +44,7 @@ public class MitarbeiterDAO implements BaseDAO<Mitarbeiter>{
 		entityManager.getTransaction().begin();
 		if(existingMitarbeiter != null) {
 			//update
-			entityManager.merge(existingMitarbeiter);
+			entityManager.merge(mitarbeiter);
 			
 		} else {
 			//create

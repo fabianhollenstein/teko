@@ -90,13 +90,13 @@
                                         		<h4>Funktionen</h4>
                                         		
                                         		<h:column>
-                                        			<h:selectOneMenu value="#{funktionItem.funktion}">
-                                        				<f:selectItems value="#{funktionService.all}" var="_funktion" itemValue="#{_funktion}" itemLabel="#{_funktion.name}"/>
+                                        			<h:selectOneMenu value="#{funktionItem.value}">
+                                        				<f:selectItems value="#{funktionService.all}" var="_funktion" itemValue="#{_funktion.id}" itemLabel="#{_funktion.name}"/>
                                         			</h:selectOneMenu>
                                         		</h:column>
                                         		<h:column>
                                         			 <h:commandButton value="Add Funktion" styleClass="btn btn-primary">
-												     	   <f:ajax listener="#{formMitarbeiter.mitarbeiter.onButtonAddFunktionClick(funktionItem.funktion)}" execute="@form" render="mitarbeiterForm" /> 
+												     	   <f:ajax listener="#{formMitarbeiter.mitarbeiter.onButtonAddFunktionClick(funktionItem.value)}" execute="@form" render="mitarbeiterForm" /> 
 												    	</h:commandButton>
                                         		</h:column>
                                         		
@@ -105,7 +105,7 @@
                                         		<h:column>
                                         		<f:facet name="header">Funktion</f:facet>
 	                                            	
-	                                            	<h:inputText id="mitarbeiterFunktionen" value="#{funktion.name}" styleClass="form-control" required="true" requiredMessage="Bitte Funktion eingeben"/>
+	                                            	<h:outputText id="mitarbeiterFunktionen" value="#{funktion.name}" styleClass="form-control" required="true" requiredMessage="Bitte Funktion eingeben"/>
 										
 													<div class="">
 														<h:message style="display:block;" for="mitarbeiterFunktionen" errorClass="alert alert-danger"/>
