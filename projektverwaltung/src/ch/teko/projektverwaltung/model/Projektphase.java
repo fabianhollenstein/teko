@@ -38,7 +38,7 @@ public class Projektphase implements Serializable{
 	
 	private List<String> links;
 	
-	private List<Aktivität> aktivitäten;
+	private List<Aktivitaet> aktivitaeten;
 	
 	private List<Meilenstein> meilensteine;
 

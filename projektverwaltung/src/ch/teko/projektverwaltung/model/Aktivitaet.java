@@ -17,7 +17,7 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Aktivität implements Serializable{
+public class Aktivitaet implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,7 +39,7 @@ public class Aktivität implements Serializable{
 //	private int budgetIst;
 	
 	
-	private int aktivitätsfortschritt;
+	private int aktivitaetsfortschritt;
 	private List<String> links;
 	
 

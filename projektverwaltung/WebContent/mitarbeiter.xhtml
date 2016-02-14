@@ -89,7 +89,7 @@
                                         		</div>
                                         		<h4>Funktionen</h4>
                                         		<!-- <h:form> -->
-                                        		<h:column>
+                                        		<!-- <h:column>
                                         			<h:selectOneMenu value="#{funktionItem.funktion}">
                                         				<f:selectItems value="#{funktionService.all}" itemValue="#{funktion}" itemLabel="#{funktion.id}"/>
                                         			</h:selectOneMenu>
@@ -98,7 +98,7 @@
                                         			 <h:commandButton value="Add Funktion" styleClass="btn btn-primary">
 												     	   <f:ajax listener="#{formMitarbeiter.mitarbeiter.onButtonAddFunktionClick(funktionItem.funktion)}" execute="@form" render="mitarbeiterForm" /> 
 												    	</h:commandButton>
-                                        		</h:column>
+                                        		</h:column> -->
                                         		<!-- </h:form> -->
                                         		<h:dataTable var="funktion" value="#{formMitarbeiter.mitarbeiter.funktionen}" styleClass="table table-striped table-bordered table-hover">
                                         		
