@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * @author Fabian
@@ -31,16 +32,14 @@ public class Aktivitaet implements Serializable{
 	private Mitarbeiter verantwortlichePerson;
 	private PersonelleRessource personelleResource;
 	
-	
-	
-	//TODO das sind externe Kosten
 	private ExterneKosten externeKosten;
-//	private int budgetSoll;
-//	private int budgetIst;
+
 	
 	
 	private int aktivitaetsfortschritt;
-	private List<String> links;
+	
+	@OneToMany
+	private List<Link> links;
 	
 
 }

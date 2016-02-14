@@ -92,6 +92,12 @@ public class Mitarbeiter implements Serializable{
 	        funktionen.remove(funktion);
 	    }
 
+	    public void onButtonAddFunktionClick(AjaxBehaviorEvent p_oEvent)
+	    {
+	    	
+	        funktionen.add(new Funktion());
+	    }
+	    
 	    public void onButtonAddFunktionClick(Funktion funktion)
 	    {
 	    	

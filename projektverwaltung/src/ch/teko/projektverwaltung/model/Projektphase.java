@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Projektphase implements Serializable{
@@ -36,10 +37,12 @@ public class Projektphase implements Serializable{
 	private int phasenfortschritt;
 	
 	
-	private List<String> links;
+	//TODO links as Object (id, path)
+//	private List<String> links;
 	
+	@OneToMany
 	private List<Aktivitaet> aktivitaeten;
-	
+	@OneToMany
 	private List<Meilenstein> meilensteine;
 
 

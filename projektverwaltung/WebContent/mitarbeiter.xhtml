@@ -88,18 +88,18 @@
                                            
                                         		</div>
                                         		<h4>Funktionen</h4>
-                                        		<!-- <h:form> -->
-                                        		<!-- <h:column>
+                                        		
+                                        		<h:column>
                                         			<h:selectOneMenu value="#{funktionItem.funktion}">
-                                        				<f:selectItems value="#{funktionService.all}" itemValue="#{funktion}" itemLabel="#{funktion.id}"/>
+                                        				<f:selectItems value="#{funktionService.all}" var="_funktion" itemValue="#{_funktion}" itemLabel="#{_funktion.name}"/>
                                         			</h:selectOneMenu>
                                         		</h:column>
                                         		<h:column>
                                         			 <h:commandButton value="Add Funktion" styleClass="btn btn-primary">
 												     	   <f:ajax listener="#{formMitarbeiter.mitarbeiter.onButtonAddFunktionClick(funktionItem.funktion)}" execute="@form" render="mitarbeiterForm" /> 
 												    	</h:commandButton>
-                                        		</h:column> -->
-                                        		<!-- </h:form> -->
+                                        		</h:column>
+                                        		
                                         		<h:dataTable var="funktion" value="#{formMitarbeiter.mitarbeiter.funktionen}" styleClass="table table-striped table-bordered table-hover">
                                         		
                                         		<h:column>

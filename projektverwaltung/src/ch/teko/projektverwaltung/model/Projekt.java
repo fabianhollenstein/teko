@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * @author Fabian
@@ -35,10 +36,12 @@ public class Projekt implements Serializable{
 	private Mitarbeiter projektleiter;
 	private Vorgehensmodell vorgehensmodell;
 	private int projektfortschritt;
-	private List<String> links;
+	//TODO links as Object (id, path)
+	@OneToMany
+	private List<Link> links;;
 	
 	
-	//TODO
+	@OneToMany
 	private List<Projektphase> projektphasen;
 	
 
