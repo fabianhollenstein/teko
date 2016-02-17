@@ -90,7 +90,7 @@
                                         		<h4>Funktionen</h4>
                                         		
                                         		<h:column>
-                                        			<h:selectOneMenu value="#{funktionItem.value}">
+                                        			<h:selectOneMenu value="#{funktionItem.value}" styleClass="form-control">
                                         				<f:selectItems value="#{funktionService.all}" var="_funktion" itemValue="#{_funktion.id}" itemLabel="#{_funktion.name}"/>
                                         			</h:selectOneMenu>
                                         		</h:column>

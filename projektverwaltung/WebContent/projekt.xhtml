@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<h:head />
+<body>
+
+	<ui:composition template="template.xhtml">
+
+
+		<ui:define name="title">
+        	Projekt
+    	</ui:define>
+		<ui:define name="content">
+			<div id="page-wrapper">
+				<!-- Start test -->
+				<div class="row">
+					<div class="col-lg-12">
+	                    <h1 class="page-header"> Projekte verwalten</h1>
+	                </div>
+	             </div>
+	                <div class="row">
+	                	<div class="col-lg-12">
+	                		<div class="panel panel-default">
+	                			<div class="panel-heading">
+	                				Projekte erfassen/bearbeiten
+	                			</div>
+	                			<div class="panel-body">
+	                				<div class="row">
+	                					<div class="col-lg-6">
+	                						<h:form id="projektForm" role="form" class="" method="post">
+	                							<div class="form-group" >
+	                                            	<label>Projekttitel</label>
+	                                            	<h:inputText id="projekttitel" value="#{formProjektprojekte.projekttitel}" styleClass="form-control" required="true" requiredMessage="Bitte Einen Projekttitel eingeben"/>
+										
+													<div class="">
+														<h:message style="display:block;" for="projekttitel" errorClass="alert alert-danger"/>
+													</div>
+                                           
+                                        		</div>
+                                        		<div class="form-group" >
+	                                            	<label>Projektbeschreibung</label>
+	                                            	<h:inputText id="projektbeschereibung" value="#{formProjekt.projekt.projektbeschreibung}" styleClass="form-control" required="true" requiredMessage="Bitte Beschreibung eingeben"/>
+										
+													<div class="">
+														<h:message style="display:block;" for="projektbeschereibung" errorClass="alert alert-danger"/>
+													</div>
+                                           
+                                        		</div>
+                                        		<div class="form-group" >
+                                        		<label>Bewilligungsdatum</label>
+                                        			<div class='input-group date' id='datetimepicker'>
+	                                            	
+	                                            	<h:inputText id="bewilligungsdatum" value="#{formProjekt.projekt.bewilligungsdatum}" styleClass="form-control" required="false" requiredMessage="Bitte Bewiligungsdatum eingeben"/>
+													<span class="input-group-addon">
+                       									<span class="glyphicon glyphicon-calendar"></span>
+                    								</span>
+													
+														<h:message style="display:block;" for="bewilligungsdatum" errorClass="alert alert-danger"/>
+													
+                                           			</div>
+                                        		</div>
+                                        		
+                                        		
+                                        		<div>-------------------------------------------------------------</div>
+                                        		<div class="form-group" >
+	                                            	<label>Abteilung</label>
+	                                            	<h:inputText id="mitarbeiterAbteilung" value="#{formMitarbeiter.mitarbeiter.abteilung}" styleClass="form-control" required="true" requiredMessage="Bitte Abteilung eingeben"/>
+										
+													<div class="">
+														<h:message style="display:block;" for="mitarbeiterAbteilung" errorClass="alert alert-danger"/>
+													</div>
+                                           
+                                        		</div>
+                                        		<div class="form-group" >
+	                                            	<label>Arbeitspensum</label>
+	                                            	<h:inputText id="mitarbeiterArbeitsPensum" value="#{formMitarbeiter.mitarbeiter.arbeitspensum}" styleClass="form-control" required="true" requiredMessage="Bitte Arbeitspensum eingeben"/>
+										
+													<div class="">
+														<h:message style="display:block;" for="mitarbeiterArbeitsPensum" errorClass="alert alert-danger"/>
+													</div>
+                                           
+                                        		</div>
+                                        		<h4>Funktionen</h4>
+                                        		
+                                        		<h:column>
+                                        			<h:selectOneMenu value="#{funktionItem.value}" styleClass="form-control">
+                                        				<f:selectItems value="#{funktionService.all}" var="_funktion" itemValue="#{_funktion.id}" itemLabel="#{_funktion.name}"/>
+                                        			</h:selectOneMenu>
+                                        		</h:column>
+                                        		<h:column>
+                                        			 <h:commandButton value="Add Funktion" styleClass="btn btn-primary">
+												     	   <f:ajax listener="#{formMitarbeiter.mitarbeiter.onButtonAddFunktionClick(funktionItem.value)}" execute="@form" render="mitarbeiterForm" /> 
+												    	</h:commandButton>
+                                        		</h:column>
+                                        		
+                                        		<h:dataTable var="funktion" value="#{formMitarbeiter.mitarbeiter.funktionen}" styleClass="table table-striped table-bordered table-hover">
+                                        		
+                                        		<h:column>
+                                        		<f:facet name="header">Funktion</f:facet>
+	                                            	
+	                                            	<h:outputText id="mitarbeiterFunktionen" value="#{funktion.name}" styleClass="form-control" required="true" requiredMessage="Bitte Funktion eingeben"/>
+										
+													<div class="">
+														<h:message style="display:block;" for="mitarbeiterFunktionen" errorClass="alert alert-danger"/>
+													</div>
+													
+													</h:column>
+													<h:column>
+													<f:facet name="header">action</f:facet>
+													<h:commandButton value="Remove" styleClass="btn btn-danger">
+							            
+							                			<f:ajax listener="#{formMitarbeiter.mitarbeiter.onButtonRemoveFunktionClick(funktion)}" execute="@form" render="@form" /> 
+							            			</h:commandButton>
+							            			</h:column>
+												
+												
+													
+                                          		 </h:dataTable>
+                                        		<div>
+													
+												   		<h:commandButton value="Add Funktion" styleClass="btn btn-primary">
+												     	   <f:ajax listener="#{formMitarbeiter.mitarbeiter.onButtonAddFunktionClick}" execute="@form" render="@form" /> 
+												    	</h:commandButton>
+													
+													</div>
+                                        		<div>
+													<h:button value="Reset" styleClass="btn btn-default"/>
+													<h:commandButton action="#{mitarbeiterService.save(formMitarbeiter.mitarbeiter)}" value="speichern" styleClass="btn btn-default"/>
+								
+												</div>
+	                						</h:form>
+	                					</div>
+	                					<div class="col-lg-6">
+	                					</div>
+	                				</div>
+	                			</div>
+	                		</div>
+	                	</div>
+	                </div>
+			
+				<div>---------------------------------------------------------------</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+                    	<h1> Bereits erfasste Mitarbeiter</h1>
+                    </div>
+					<div class="panel-body">
+						<h:form role="form" id="mitarbeiterFromDB" class="form-horizontal" method="post">
+							<h:dataTable var="mitarbeiter" value="#{mitarbeiterService.all}" styleClass="table table-striped table-bordered table-hover">
+								
+								<h:column>
+							        <f:facet name="header">Mitarbeiter</f:facet>
+							        <h:outputText value="#{mitarbeiter.name}" /><span> </span>
+							        <h:outputText value="#{mitarbeiter.vorname}" />
+							    </h:column>
+								<h:column>
+							        <f:facet name="header">action</f:facet>
+							        <h:commandButton value="bearbeiten" styleClass="btn btn-primary">
+										<f:ajax listener="#{formMitarbeiter.setMitarbeiter(mitarbeiter)}" execute="@all" render="mitarbeiterForm" /> 
+									</h:commandButton>
+									<h:commandButton action="#{mitarbeiterService.delete(mitarbeiter)}" value="löschen" styleClass="btn btn-danger">
+									
+									</h:commandButton>
+							    </h:column>
+							
+							</h:dataTable>
+						</h:form>
+					</div>
+				</div>
+			</div><!-- end PageWrapper -->
+		</ui:define><!-- end content -->
+		<ui:define name="extraJavascripts">
+		<!-- TODO jquery code for date time picker -->
+			<script type="text/javascript">
+            	$(function () {
+               	 	$('#datetimepicker').datetimepicker({
+                		format: dd/mm/yyyy
+                	});
+            	});
+        	</script>
+		
+		</ui:define>
+
+</ui:composition><!-- end template -->
+	
+	
+	
+
+</body>
+
+</html>
