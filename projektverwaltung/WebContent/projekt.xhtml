@@ -89,13 +89,13 @@
                                         		<h4>Funktionen</h4>
                                         		
                                         		<h:column>
-                                        			<h:selectOneMenu value="#{funktionItem.value}" styleClass="form-control">
+                                        			<h:selectOneMenu value="#{funktionItem.id}" styleClass="form-control">
                                         				<f:selectItems value="#{funktionService.all}" var="_funktion" itemValue="#{_funktion.id}" itemLabel="#{_funktion.name}"/>
                                         			</h:selectOneMenu>
                                         		</h:column>
                                         		<h:column>
                                         			 <h:commandButton value="Add Funktion" styleClass="btn btn-primary">
-												     	   <f:ajax listener="#{formMitarbeiter.mitarbeiter.onButtonAddFunktionClick(funktionItem.value)}" execute="@form" render="mitarbeiterForm" /> 
+												     	   <f:ajax listener="#{formMitarbeiter.mitarbeiter.onButtonAddFunktionClick(funktionItem.id)}" execute="@form" render="mitarbeiterForm" /> 
 												    	</h:commandButton>
                                         		</h:column>
                                         		
@@ -177,9 +177,10 @@
 		<ui:define name="extraJavascripts">
 		<!-- TODO jquery code for date time picker -->
 			<script type="text/javascript">
-            	$(function () {
+			$(document).ready(
+            	function () {
                	 	$('#datetimepicker').datetimepicker({
-                		format: dd/mm/yyyy
+                		format: 'dd.mm.yyyy'
                 	});
             	});
         	</script>

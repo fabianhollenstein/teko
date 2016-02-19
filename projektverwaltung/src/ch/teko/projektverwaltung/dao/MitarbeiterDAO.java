@@ -21,12 +21,17 @@ import ch.teko.projektverwaltung.model.Mitarbeiter;
  *
  */
 public class MitarbeiterDAO implements BaseDAO<Mitarbeiter>{
-
+	private EntityManagerFactory factory;
+	private EntityManager entityManager;
+	public MitarbeiterDAO() {
+		factory = Persistence.createEntityManagerFactory("ProjektverwaltungEntityManager");
+		entityManager = factory.createEntityManager();
+		
+	}
 	@Override
 	public Mitarbeiter getById(int id) {
 		// TODO Auto-generated method stub
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("ProjektverwaltungEntityManager");
-		EntityManager entityManager = factory.createEntityManager();
+		
 		
 //		entityManager.refresh(entity);
 		Mitarbeiter existingMitarbeiter = entityManager.find(Mitarbeiter.class, id);
@@ -37,9 +42,7 @@ public class MitarbeiterDAO implements BaseDAO<Mitarbeiter>{
 
 	@Override
 	public void save(Mitarbeiter mitarbeiter) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("ProjektverwaltungEntityManager");
-		EntityManager entityManager = factory.createEntityManager();
-		
+	
 		Mitarbeiter existingMitarbeiter = entityManager.find(Mitarbeiter.class, mitarbeiter.getId());
 		entityManager.getTransaction().begin();
 		if(existingMitarbeiter != null) {
@@ -53,42 +56,21 @@ public class MitarbeiterDAO implements BaseDAO<Mitarbeiter>{
 		
 		entityManager.flush();
 		entityManager.getTransaction().commit();
-		
-
-		entityManager.close();
-		factory.close();
-		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-	    try {
-			ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
+			
 		
 	}
 
 	@Override
 	public void delete(Mitarbeiter mitarbeiter) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("ProjektverwaltungEntityManager");
-		EntityManager entityManager = factory.createEntityManager();
-		
-		
+	
 		Mitarbeiter toDelete = entityManager.find(Mitarbeiter.class, mitarbeiter.getId());
 		 
 		entityManager.getTransaction().begin();
 		entityManager.remove(toDelete);
 		entityManager.getTransaction().commit();
 		
-		entityManager.close();
-		factory.close();
 		
-		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-	    try {
-			ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 
 		
 	}
@@ -96,8 +78,7 @@ public class MitarbeiterDAO implements BaseDAO<Mitarbeiter>{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Mitarbeiter> getAll() {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("ProjektverwaltungEntityManager");
-		EntityManager entityManager = factory.createEntityManager();
+		
 		Query query = entityManager.createQuery("FROM Mitarbeiter");
 		List<Mitarbeiter> mitarbeiterList = (List<Mitarbeiter>) query.getResultList();
 		return mitarbeiterList;

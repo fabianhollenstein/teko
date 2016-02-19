@@ -11,6 +11,7 @@
 	
 	<!-- Bootstrap Core CSS -->
 	<h:outputStylesheet name="css/bootstrap.css"/>
+	<h:outputStylesheet name="css/bootstrap-datepicker.css"/>
 
 	<!-- Custom CSS -->
 	<h:outputStylesheet name="css/sb-admin.css" />
@@ -188,17 +189,20 @@
 	
 	<ui:insert name="javascripts">
 			<!-- jQuery -->
-		<h:outputScript name="js/jquery.js" target="body"/>
+		<h:outputScript name="js/jquery.js" target="head"/>
 		<!-- Bootstrap Core JavaScript -->
-		<h:outputScript name="js/bootstrap.js" target="body"/>
+		<h:outputScript name="js/moment.js" target="head"/>
+		<h:outputScript name="js/bootstrap.js" target="head"/>
+		<h:outputScript name="js/bootstrap-datepicker.js" target="head"/>
+		
 	
 		<!-- Morris Charts JavaScript -->
-		<h:outputScript  name="js/plugins/morris/raphael.min.js" target="body" />
+		<h:outputScript  name="js/plugins/morris/raphael.min.js" target="head" />
 		
 		<h:outputScript  name="js/plugins/morris/morris.js"
-			target="body" />
+			target="head" />
 		<h:outputScript name="js/plugins/morris/morris-data.js"
-			target="body" />
+			target="head" />
 			
 	</ui:insert>
 	<ui:insert name="extraJavascripts"></ui:insert>

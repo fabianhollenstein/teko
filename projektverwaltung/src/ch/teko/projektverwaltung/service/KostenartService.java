@@ -7,6 +7,7 @@ import javax.faces.bean.RequestScoped;
 
 import ch.teko.projektverwaltung.dao.KostenartDAO;
 import ch.teko.projektverwaltung.model.Kostenart;
+import ch.teko.projektverwaltung.model.Navigation;
 
 @ManagedBean()
 @RequestScoped
@@ -14,16 +15,18 @@ public class KostenartService {
 
 	private KostenartDAO kostenartDAO = new KostenartDAO();
 
-	public void save(Kostenart toSave) {
+	public String save(Kostenart toSave) {
 		kostenartDAO.save(toSave);
+		return Navigation.KOSTENART_VIEW;
 	}
 	
 	public List<Kostenart> getAll() {
 		return kostenartDAO.getAll();
 	}
 	
-	public void delete(Kostenart kostenart) {
+	public String delete(Kostenart kostenart) {
 		kostenartDAO.delete(kostenart);
+		return Navigation.KOSTENART_VIEW;
 	}
 	
 	

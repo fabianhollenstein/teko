@@ -22,10 +22,15 @@ import ch.teko.projektverwaltung.model.Funktion;
  */
 public class FunktionDAO implements BaseDAO<Funktion>{
 
+	EntityManagerFactory factory;
+	EntityManager entityManager;
+	
+	public FunktionDAO() {
+		factory = Persistence.createEntityManagerFactory("ProjektverwaltungEntityManager");
+		entityManager = factory.createEntityManager();
+	}
 	@Override
 	public Funktion getById(int id) {
-				EntityManagerFactory factory = Persistence.createEntityManagerFactory("ProjektverwaltungEntityManager");
-				EntityManager entityManager = factory.createEntityManager();
 				
 //				entityManager.refresh(entity);
 				Funktion existingFunktion = entityManager.find(Funktion.class, id);
@@ -36,8 +41,6 @@ public class FunktionDAO implements BaseDAO<Funktion>{
 
 	@Override
 	public void save(Funktion funktion) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("ProjektverwaltungEntityManager");
-		EntityManager entityManager = factory.createEntityManager();
 		
 		Funktion existingFunktion = entityManager.find(Funktion.class, funktion.getId());
 		entityManager.getTransaction().begin();
@@ -54,8 +57,7 @@ public class FunktionDAO implements BaseDAO<Funktion>{
 		entityManager.getTransaction().commit();
 		
 
-		entityManager.close();
-		factory.close();
+		
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 	    try {
 			ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
@@ -69,8 +71,7 @@ public class FunktionDAO implements BaseDAO<Funktion>{
 
 	@Override
 	public void delete(Funktion funktion) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("ProjektverwaltungEntityManager");
-		EntityManager entityManager = factory.createEntityManager();
+		
 		
 		
 		Funktion toDelete = entityManager.find(Funktion.class, funktion.getId());
@@ -79,8 +80,7 @@ public class FunktionDAO implements BaseDAO<Funktion>{
 		entityManager.remove(toDelete);
 		entityManager.getTransaction().commit();
 		
-		entityManager.close();
-		factory.close();
+		
 		
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 	    try {

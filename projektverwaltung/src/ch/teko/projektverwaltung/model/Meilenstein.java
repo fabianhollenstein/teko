@@ -1,7 +1,7 @@
 package ch.teko.projektverwaltung.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,6 +35,14 @@ public class Meilenstein implements Serializable{
     {
         return name;
     }
+
+	public Date getDatum() {
+		return datum;
+	}
+
+	public void setDatum(Date datum) {
+		this.datum = datum;
+	}
     
 
 }

@@ -14,17 +14,10 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class FormFunktion {
 	
-	private Funktion funktion;
+	private Funktion funktion = new Funktion();
 	
 	public Funktion getFunktion() {
-		Funktion currentFunktion = null;
-		if(funktion != null) {
-			currentFunktion = funktion;
-		} else {
-			currentFunktion = new Funktion();
-			this.funktion = currentFunktion;
-		}
-		return currentFunktion;
+		return funktion;
 	}
 	
 	public void setFunktion(Funktion funktion) {

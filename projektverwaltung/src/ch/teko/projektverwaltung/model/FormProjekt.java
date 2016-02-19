@@ -14,17 +14,10 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class FormProjekt {
 	
-	private Projekt projekt;
+	private Projekt projekt = new Projekt();
 	
 	public Projekt getProjekt() {
-		Projekt currentProjekt = null;
-		if(projekt != null) {
-			currentProjekt = projekt;
-		} else {
-			currentProjekt = new Projekt();
-			this.projekt = currentProjekt;
-		}
-		return currentProjekt;
+		return projekt;
 	}
 	
 	public void setMitarbeiter(Projekt mitarbeiter) {

@@ -22,5 +22,30 @@
 		<managed-bean-class>ch.teko.projektverwaltung.model.Vorgehensmodell</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
+	
+	<navigation-rule>
+		<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>mitarbeiter</from-outcome>
+			<to-view-id>mitarbeiter.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>projekt</from-outcome>
+			<to-view-id>projekt.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>funktion</from-outcome>
+			<to-view-id>funktion.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>kostenart</from-outcome>
+			<to-view-id>kostenart.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>vorgehensmodell</from-outcome>
+			<to-view-id>vorgehensmodell.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
 
 </faces-config>

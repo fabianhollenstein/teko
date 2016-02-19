@@ -87,53 +87,21 @@
 													</div>
                                            
                                         		</div>
-                                        		<h4>Funktionen</h4>
                                         		
-                                        		<h:column>
-                                        			<h:selectOneMenu value="#{funktionItem.value}" styleClass="form-control">
-                                        				<f:selectItems value="#{funktionService.all}" var="_funktion" itemValue="#{_funktion.id}" itemLabel="#{_funktion.name}"/>
-                                        			</h:selectOneMenu>
-                                        		</h:column>
-                                        		<h:column>
-                                        			 <h:commandButton value="Add Funktion" styleClass="btn btn-primary">
-												     	   <f:ajax listener="#{formMitarbeiter.mitarbeiter.onButtonAddFunktionClick(funktionItem.value)}" execute="@form" render="mitarbeiterForm" /> 
-												    	</h:commandButton>
-                                        		</h:column>
                                         		
-                                        		<h:dataTable var="funktion" value="#{formMitarbeiter.mitarbeiter.funktionen}" styleClass="table table-striped table-bordered table-hover">
+                                        		<div class="form-group">
+                                        		<label>Funktionen</label>
+                                        			<h:selectManyCheckbox value="#{formMitarbeiter.funktionIds}" styleClass="" layout="pageDirection">
+                                        				
+                                        				<f:selectItems value="#{funktionService.all}" var="_funktion" itemValue="#{_funktion.id}" itemLabel="#{_funktion.name}" />
+                                        				
+                                        			</h:selectManyCheckbox>
+                                        			
+                                        		</div>           
                                         		
-                                        		<h:column>
-                                        		<f:facet name="header">Funktion</f:facet>
-	                                            	
-	                                            	<h:outputText id="mitarbeiterFunktionen" value="#{funktion.name}" styleClass="form-control" required="true" requiredMessage="Bitte Funktion eingeben"/>
-										
-													<div class="">
-														<h:message style="display:block;" for="mitarbeiterFunktionen" errorClass="alert alert-danger"/>
-													</div>
-													
-													</h:column>
-													<h:column>
-													<f:facet name="header">action</f:facet>
-													<h:commandButton value="Remove" styleClass="btn btn-danger">
-							            
-							                			<f:ajax listener="#{formMitarbeiter.mitarbeiter.onButtonRemoveFunktionClick(funktion)}" execute="@form" render="@form" /> 
-							            			</h:commandButton>
-							            			</h:column>
-												
-												
-													
-                                          		 </h:dataTable>
-                                        		<div>
-													
-												   		<h:commandButton value="Add Funktion" styleClass="btn btn-primary">
-												     	   <f:ajax listener="#{formMitarbeiter.mitarbeiter.onButtonAddFunktionClick}" execute="@form" render="@form" /> 
-												    	</h:commandButton>
-													
-													</div>
                                         		<div>
 													<h:button value="Reset" styleClass="btn btn-default"/>
-													<h:commandButton action="#{mitarbeiterService.save(formMitarbeiter.mitarbeiter)}" value="speichern" styleClass="btn btn-default"/>
-								
+													<h:commandButton action="#{mitarbeiterService.save(formMitarbeiter)}" value="speichern" styleClass="btn btn-default"/>
 												</div>
 	                						</h:form>
 	                					</div>

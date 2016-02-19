@@ -14,17 +14,10 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class FormKostenart {
 	
-	private Kostenart kostenart;
+	private Kostenart kostenart = new Kostenart();
 	
 	public Kostenart getKostenart() {
-		Kostenart currentKostenart = null;
-		if(kostenart != null) {
-			currentKostenart = kostenart;
-		} else {
-			currentKostenart = new Kostenart();
-			this.kostenart = currentKostenart;
-		}
-		return currentKostenart;
+		return kostenart;
 	}
 	
 	public void setKostenart(Kostenart kostenart) {

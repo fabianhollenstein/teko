@@ -14,17 +14,10 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class FormVorgehensmodell {
 	
-	private Vorgehensmodell vorgehensmodell;
+	private Vorgehensmodell vorgehensmodell = new Vorgehensmodell();
 	
 	public Vorgehensmodell getVorgehensmodell() {
- 		Vorgehensmodell currentVorgehensmodell = null;
-		if(vorgehensmodell != null) {
-			currentVorgehensmodell = vorgehensmodell;
-		} else {
-			currentVorgehensmodell = new Vorgehensmodell();
-			this.vorgehensmodell = currentVorgehensmodell;
-		}
-		return currentVorgehensmodell;
+ 		return vorgehensmodell;
 	}
 	
 	public void setVorgehensmodell(Vorgehensmodell vorgehensmodell) {
