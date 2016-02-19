@@ -1,13 +1,9 @@
 package ch.teko.projektverwaltung.service;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
 
 import ch.teko.projektverwaltung.dao.FunktionDAO;
 import ch.teko.projektverwaltung.dao.MitarbeiterDAO;
@@ -23,10 +19,10 @@ public class MitarbeiterService {
 	private MitarbeiterDAO mitarbeiterDAO = new MitarbeiterDAO();
 	private FunktionDAO funktionDAO = new FunktionDAO();
 
-	public String save(FormMitarbeiter toSave) {
-		Mitarbeiter mitarbeiter = toSave.getMitarbeiter();
+	public String save(FormMitarbeiter formMitarbeiter) {
+		Mitarbeiter mitarbeiter = formMitarbeiter.getMitarbeiter();
 		mitarbeiter.clearFunktion();
-		String[] ids = toSave.getFunktionIds();
+		String[] ids = formMitarbeiter.getFunktionIds();
 		for(int i = 0; i < ids.length; i++) {
 			int id = Integer.parseInt(ids[i]);
 			Funktion funktion = funktionDAO.getById(id);
@@ -40,7 +36,7 @@ public class MitarbeiterService {
 		mitarbeiterDAO.save(mitarbeiter);
 		
 		
-		toSave.setMitarbeiter(new Mitarbeiter());
+		formMitarbeiter.setMitarbeiter(new Mitarbeiter());
 		
 		return Navigation.MITARBEITER_VIEW;
 	}
@@ -51,7 +47,6 @@ public class MitarbeiterService {
 	
 	public String delete(Mitarbeiter mitarbeiter) {
 		mitarbeiterDAO.delete(mitarbeiter);
-		
 		return Navigation.MITARBEITER_VIEW;
 	}
 	

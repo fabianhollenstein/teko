@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import ch.teko.projektverwaltung.dao.FunktionDAO;
+import ch.teko.projektverwaltung.model.FormFunktion;
 import ch.teko.projektverwaltung.model.Funktion;
 import ch.teko.projektverwaltung.model.Navigation;
 
@@ -15,8 +16,10 @@ public class FunktionService {
 
 	private FunktionDAO funktionDAO = new FunktionDAO();
 
-	public String save(Funktion toSave) {
-		funktionDAO.save(toSave);
+	public String save(FormFunktion formFunktion) {
+		funktionDAO.save(formFunktion.getFunktion());
+		formFunktion.setFunktion(new Funktion());
+		
 		return Navigation.FUNKTION_VIEW;
 	}
 	
@@ -28,6 +31,4 @@ public class FunktionService {
 		funktionDAO.delete(funktion);
 		return Navigation.FUNKTION_VIEW;
 	}
-	
-	
 }

@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import ch.teko.projektverwaltung.dao.KostenartDAO;
+import ch.teko.projektverwaltung.model.FormKostenart;
 import ch.teko.projektverwaltung.model.Kostenart;
 import ch.teko.projektverwaltung.model.Navigation;
 
@@ -15,8 +16,10 @@ public class KostenartService {
 
 	private KostenartDAO kostenartDAO = new KostenartDAO();
 
-	public String save(Kostenart toSave) {
-		kostenartDAO.save(toSave);
+	public String save(FormKostenart formKostenart) {
+		kostenartDAO.save(formKostenart.getKostenart());
+		formKostenart.setKostenart(new Kostenart());
+		
 		return Navigation.KOSTENART_VIEW;
 	}
 	

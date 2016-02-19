@@ -40,7 +40,6 @@ public class MitarbeiterDAO implements BaseDAO<Mitarbeiter> {
 		if (existingMitarbeiter != null) {
 			// update
 			entityManager.merge(mitarbeiter);
-
 		} else {
 			// create
 			entityManager.persist(mitarbeiter);
@@ -48,7 +47,6 @@ public class MitarbeiterDAO implements BaseDAO<Mitarbeiter> {
 
 		entityManager.flush();
 		entityManager.getTransaction().commit();
-
 	}
 
 	@Override
