@@ -4,6 +4,7 @@
 package ch.teko.projektverwaltung.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -32,20 +34,27 @@ public class Projekt implements Serializable{
 	private String projekttitel;
 	private String projektbeschreibung;
 	private Date bewilligungsdatum;
-	private int priorität;
-	private int status;
-	private Date stardatumSoll;
+	private int prioritaet;
+	private String status;
+	private Date startdatumSoll;
 	private Date enddatumSoll;
+	//TODO erst beim bearbeiten hinzufügen
 	private Date startdatumIst;
 	private Date enddatumIst;
+	
+	@ManyToOne
 	private Mitarbeiter projektleiter;
+	@ManyToOne
 	private Vorgehensmodell vorgehensmodell;
 	private int projektfortschritt;
-	//TODO links as Object (id, path)
+	
 	@OneToMany
-	private List<Link> links;;
+	private List<Link> links;
 	
-	
+	public Projekt() {
+		links = new ArrayList<Link>();
+		links.add(new Link());
+	}
 	//TODO if 
 	@OneToMany
 	private List<Projektphase> projektphasen;
@@ -91,33 +100,33 @@ public class Projekt implements Serializable{
 	}
 
 
-	public int getPriorität() {
-		return priorität;
+	public int getPrioritaet() {
+		return prioritaet;
 	}
 
 
-	public void setPriorität(int priorität) {
-		this.priorität = priorität;
+	public void setPrioritaet(int priorität) {
+		this.prioritaet = priorität;
 	}
 
 
-	public int getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
 
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
 
-	public Date getStardatumSoll() {
-		return stardatumSoll;
+	public Date getStartdatumSoll() {
+		return startdatumSoll;
 	}
 
 
-	public void setStardatumSoll(Date stardatumSoll) {
-		this.stardatumSoll = stardatumSoll;
+	public void setStartdatumSoll(Date startdatumSoll) {
+		this.startdatumSoll = startdatumSoll;
 	}
 
 
@@ -188,6 +197,14 @@ public class Projekt implements Serializable{
 
 	public void setLinks(List<Link> links) {
 		this.links = links;
+	}
+	
+	public void onButtonRemoveLink(final Link link) {
+		links.remove(link);
+	}
+	
+	public void onButtonAddFieldLink() {
+		links.add(new Link());
 	}
 
 

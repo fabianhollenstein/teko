@@ -33,10 +33,10 @@
 	                			<div class="panel-body">
 	                				<div class="row">
 	                					<div class="col-lg-6">
-	                						<h:form id="projektForm" role="form" class="" method="post">
+	                						<h:form id="projektForm" role="form" class="" method="post" enctype="multipart/form-data">
 	                							<div class="form-group" >
 	                                            	<label>Projekttitel</label>
-	                                            	<h:inputText id="projekttitel" value="#{formProjektprojekte.projekttitel}" styleClass="form-control" required="true" requiredMessage="Bitte Einen Projekttitel eingeben"/>
+	                                            	<h:inputText id="projekttitel" value="#{formProjekt.projekt.projekttitel}" styleClass="form-control" required="false" requiredMessage="Bitte Einen Projekttitel eingeben"/>
 										
 													<div class="">
 														<h:message style="display:block;" for="projekttitel" errorClass="alert alert-danger"/>
@@ -45,7 +45,7 @@
                                         		</div>
                                         		<div class="form-group" >
 	                                            	<label>Projektbeschreibung</label>
-	                                            	<h:inputText id="projektbeschereibung" value="#{formProjekt.projekt.projektbeschreibung}" styleClass="form-control" required="true" requiredMessage="Bitte Beschreibung eingeben"/>
+	                                            	<h:inputText id="projektbeschereibung" value="#{formProjekt.projekt.projektbeschreibung}" styleClass="form-control" required="false" requiredMessage="Bitte Beschreibung eingeben"/>
 										
 													<div class="">
 														<h:message style="display:block;" for="projektbeschereibung" errorClass="alert alert-danger"/>
@@ -54,9 +54,11 @@
                                         		</div>
                                         		<div class="form-group" >
                                         		<label>Bewilligungsdatum</label>
-                                        			<div class='input-group date' id='datetimepicker'>
+                                        			<div class='input-group date' id='bewilligungsdatumpicker'>
 	                                            	
-	                                            	<h:inputText id="bewilligungsdatum" value="#{formProjekt.projekt.bewilligungsdatum}" styleClass="form-control" required="false" requiredMessage="Bitte Bewiligungsdatum eingeben"/>
+	                                            	<h:inputText id="bewilligungsdatum" value="#{formProjekt.projekt.bewilligungsdatum}" styleClass="form-control" required="false" requiredMessage="Bitte Bewiligungsdatum eingeben">
+	                                            		<f:convertDateTime pattern="dd.MM.yyyy" />
+	                                            	</h:inputText>
 													<span class="input-group-addon">
                        									<span class="glyphicon glyphicon-calendar"></span>
                     								</span>
@@ -65,58 +67,99 @@
 													
                                            			</div>
                                         		</div>
-                                        		
-                                        		
-                                        		<div>-------------------------------------------------------------</div>
                                         		<div class="form-group" >
-	                                            	<label>Abteilung</label>
-	                                            	<h:inputText id="mitarbeiterAbteilung" value="#{formMitarbeiter.mitarbeiter.abteilung}" styleClass="form-control" required="true" requiredMessage="Bitte Abteilung eingeben"/>
+	                                            	<label>Prioriät</label>
+	                                            	<h:inputText id="prioritaet" value="#{formProjekt.projekt.prioritaet}" styleClass="form-control" required="false" requiredMessage="Bitte Priorität eingeben"/>
 										
-													<div class="">
-														<h:message style="display:block;" for="mitarbeiterAbteilung" errorClass="alert alert-danger"/>
-													</div>
+													<!-- <div class="">
+														<h:message style="display:block;" for="prioritaet" errorClass="alert alert-danger"/>
+													</div> -->
                                            
                                         		</div>
                                         		<div class="form-group" >
-	                                            	<label>Arbeitspensum</label>
-	                                            	<h:inputText id="mitarbeiterArbeitsPensum" value="#{formMitarbeiter.mitarbeiter.arbeitspensum}" styleClass="form-control" required="true" requiredMessage="Bitte Arbeitspensum eingeben"/>
+	                                            	<label>Status</label>
+	                                            	<h:inputText id="status" value="#{formProjekt.projekt.status}" styleClass="form-control" required="false" requiredMessage="Bitte Status eingeben"/>
 										
-													<div class="">
-														<h:message style="display:block;" for="mitarbeiterArbeitsPensum" errorClass="alert alert-danger"/>
-													</div>
+													<!-- <div class="">
+														<h:message style="display:block;" for="status" errorClass="alert alert-danger"/>
+													</div> -->
                                            
                                         		</div>
-                                        		<h4>Funktionen</h4>
-                                        		
-                                        		<h:column>
-                                        			<h:selectOneMenu value="#{funktionItem.id}" styleClass="form-control">
-                                        				<f:selectItems value="#{funktionService.all}" var="_funktion" itemValue="#{_funktion.id}" itemLabel="#{_funktion.name}"/>
-                                        			</h:selectOneMenu>
-                                        		</h:column>
-                                        		<h:column>
-                                        			 <h:commandButton value="Add Funktion" styleClass="btn btn-primary">
-												     	   <f:ajax listener="#{formMitarbeiter.mitarbeiter.onButtonAddFunktionClick(funktionItem.id)}" execute="@form" render="mitarbeiterForm" /> 
-												    	</h:commandButton>
-                                        		</h:column>
-                                        		
-                                        		<h:dataTable var="funktion" value="#{formMitarbeiter.mitarbeiter.funktionen}" styleClass="table table-striped table-bordered table-hover">
-                                        		
-                                        		<h:column>
-                                        		<f:facet name="header">Funktion</f:facet>
+                                        		<div class="form-group" >
+	                                            	<label>Startdatum Soll</label>
+	                                            	<div class='input-group date' id='startdatumsollpicker'>
 	                                            	
-	                                            	<h:outputText id="mitarbeiterFunktionen" value="#{funktion.name}" styleClass="form-control" required="true" requiredMessage="Bitte Funktion eingeben"/>
+	                                            	<h:inputText id="startdatumsoll" value="#{formProjekt.projekt.startdatumSoll}" styleClass="form-control" required="false" requiredMessage="Bitte Startdatum eingeben">
+	                                            		<f:convertDateTime pattern="dd.MM.yyyy" />
+	                                            	</h:inputText>
+													<span class="input-group-addon">
+                       									<span class="glyphicon glyphicon-calendar"></span>
+                    								</span>
+	                                            	
 										
-													<div class="">
-														<h:message style="display:block;" for="mitarbeiterFunktionen" errorClass="alert alert-danger"/>
-													</div>
+													<!-- <div class="">
+														<h:message style="display:block;" for="status" errorClass="alert alert-danger"/>
+													</div> -->
+                                           			</div>
+                                        		</div>
+                                        		<div class="form-group" >
+	                                            	<label>Enddatum Soll</label>
+	                                            	<div class='input-group date' id='enddatumsollpicker'>
+		                                            	<h:inputText id="enddatumsoll" value="#{formProjekt.projekt.enddatumSoll}" styleClass="form-control" required="false" requiredMessage="Bitte Enddatum eingeben">
+		                                            		<f:convertDateTime pattern="dd.MM.yyyy" />
+		                                            	</h:inputText>
+														<span class="input-group-addon">
+	                       									<span class="glyphicon glyphicon-calendar"></span>
+	                    								</span>
+													<!-- <div class="">
+														<h:message style="display:block;" for="status" errorClass="alert alert-danger"/>
+													</div> -->
+                                           			</div>
+                                        		</div>
+                                        		<div class="form-group" >
+	                                            	<label>Projektleiter</label>
+	                                            	<h:selectOneMenu value="#{formProjekt.mitarbeiterId}" styleClass="form-control">
+                                        				<f:selectItems value="#{mitarbeiterService.all}" var="_mitarbeiter" itemValue="#{_mitarbeiter.id}" itemLabel="#{_mitarbeiter.vorname} #{mitarbeiter.name}"/>
+                                        			</h:selectOneMenu>
+                                        		</div>
+                                        		<div class="form-group" >
+	                                            	<label>Vorgehensmodell</label>
+	                                            	<h:selectOneMenu value="#{formProjekt.vorgehensmodellId}" styleClass="form-control">
+                                        				<f:selectItems value="#{vorgehensmodellService.all}" var="_vorgehensmodell" itemValue="#{_vorgehensmodell.id}" itemLabel="#{_vorgehensmodell.name}"/>
+                                        			</h:selectOneMenu>
+                                        		</div>
+                                        		<div class="form-group" >
+	                                            	<label>Projektfortschritt</label>
+	                                            	<h:inputText id="projektfortschritt" value="#{formProjekt.projekt.projektfortschritt}" styleClass="form-control" required="false" requiredMessage="Bitte Projektfortschritt eingeben"/>
+										
+													<!-- <div class="">
+														<h:message style="display:block;" for="status" errorClass="alert alert-danger"/>
+													</div> -->
+                                           
+                                        		</div>
+                                        		<div>-------------------------------------------------------------</div>
+                                        		
+                                        		
+                                        		
+                                        		<h:dataTable var="link" value="#{formProjekt.projekt.links}" styleClass="table table-striped table-bordered table-hover">
+                                        		
+	                                        		<h:column>
+	                                        		<f:facet name="header">Links</f:facet>
+		                                            	
+		                                            	
+		                                            	<h:inputText id="projektLinks" value="#{link.link}" styleClass="form-control" required="false"/>
+											
+														<div class="">
+															<h:message style="display:block;" for="projektLinks" errorClass="alert alert-danger"/>
+														</div>
 													
 													</h:column>
 													<h:column>
 													<f:facet name="header">action</f:facet>
-													<h:commandButton value="Remove" styleClass="btn btn-danger">
-							            
-							                			<f:ajax listener="#{formMitarbeiter.mitarbeiter.onButtonRemoveFunktionClick(funktion)}" execute="@form" render="@form" /> 
-							            			</h:commandButton>
+														<h:commandButton value="Remove" styleClass="btn btn-danger">
+								            
+								                			<f:ajax listener="#{formProjekt.projekt.onButtonRemoveLink(link)}" execute="@form" render="@form" /> 
+								            			</h:commandButton>
 							            			</h:column>
 												
 												
@@ -124,21 +167,21 @@
                                           		 </h:dataTable>
                                         		<div>
 													
-												   		<h:commandButton value="Add Funktion" styleClass="btn btn-primary">
-												     	   <f:ajax listener="#{formMitarbeiter.mitarbeiter.onButtonAddFunktionClick}" execute="@form" render="@form" /> 
+												   		<h:commandButton value="Add Link" styleClass="btn btn-primary">
+												     	   <f:ajax listener="#{formProjekt.projekt.onButtonAddFieldLink}" execute="@form" render="@form" /> 
 												    	</h:commandButton>
 													
 													</div>
                                         		<div>
 													<h:button value="Reset" styleClass="btn btn-default"/>
-													<h:commandButton action="#{mitarbeiterService.save(formMitarbeiter.mitarbeiter)}" value="speichern" styleClass="btn btn-default"/>
+													<h:commandButton action="#{projektService.save(formProjekt)}" value="speichern" styleClass="btn btn-default"/>
 								
 												</div>
 	                						</h:form>
 	                					</div>
 	                					<div class="col-lg-6">
 	                					</div>
-	                				</div>
+	                				</div><!-- end row -->
 	                			</div>
 	                		</div>
 	                	</div>
@@ -147,23 +190,23 @@
 				<div>---------------------------------------------------------------</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">
-                    	<h1> Bereits erfasste Mitarbeiter</h1>
+                    	<h1> Bereits erfasste Projekte</h1>
                     </div>
 					<div class="panel-body">
-						<h:form role="form" id="mitarbeiterFromDB" class="form-horizontal" method="post">
-							<h:dataTable var="mitarbeiter" value="#{mitarbeiterService.all}" styleClass="table table-striped table-bordered table-hover">
+						<h:form role="form" id="projektFromDB" class="form-horizontal" method="post">
+							<h:dataTable var="projekt" value="#{projektService.all}" styleClass="table table-striped table-bordered table-hover">
 								
 								<h:column>
-							        <f:facet name="header">Mitarbeiter</f:facet>
-							        <h:outputText value="#{mitarbeiter.name}" /><span> </span>
-							        <h:outputText value="#{mitarbeiter.vorname}" />
+							        <f:facet name="header">Projekt</f:facet>
+							        <h:outputText value="#{projekt.projekttitel}" />
+							        
 							    </h:column>
 								<h:column>
 							        <f:facet name="header">action</f:facet>
 							        <h:commandButton value="bearbeiten" styleClass="btn btn-primary">
-										<f:ajax listener="#{formMitarbeiter.setMitarbeiter(mitarbeiter)}" execute="@all" render="mitarbeiterForm" /> 
+							        <f:ajax listener="#{formProjekt.setProjekt(projekt)}" execute="@all" render="projektForm" /> 
 									</h:commandButton>
-									<h:commandButton action="#{mitarbeiterService.delete(mitarbeiter)}" value="löschen" styleClass="btn btn-danger">
+									<h:commandButton action="#{projektService.delete(projekt)}" value="löschen" styleClass="btn btn-danger">
 									
 									</h:commandButton>
 							    </h:column>
@@ -175,15 +218,37 @@
 			</div><!-- end PageWrapper -->
 		</ui:define><!-- end content -->
 		<ui:define name="extraJavascripts">
+		<script>
+		jQuery( document ).ready(function() {
+	            	 
+			jQuery('#bewilligungsdatumpicker').datetimepicker({
+	     					inline: true,
+	     					format: 'dd.mm.yyyy'
+	     				});
+			jQuery('#startdatumsollpicker').datetimepicker({
+	     					format: 'dd.mm.yyyy'
+	     				});
+			jQuery('#enddatumsollpicker').datetimepicker({
+	     					format: 'dd.mm.yyyy'
+	     				});
+	     			
+		});
+		</script>
 		<!-- TODO jquery code for date time picker -->
-			<script type="text/javascript">
-			$(document).ready(
-            	function () {
-               	 	$('#datetimepicker').datetimepicker({
-                		format: 'dd.mm.yyyy'
-                	});
-            	});
-        	</script>
+		<!-- 	<script type="text/javascript">
+			$( document ).ready(function() {
+				$('#bewilligungsdatumpicker').datetimepicker({
+					format: 'dd.mm.yyyy'
+				});
+				$('#startdatumsollpicker').datetimepicker({
+					format: 'dd.mm.yyyy'
+				});
+				$('#enddatumsollpicker').datetimepicker({
+					format: 'dd.mm.yyyy'
+				});
+			});
+		
+        	</script> -->
 		
 		</ui:define>
 

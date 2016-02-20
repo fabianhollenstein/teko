@@ -16,8 +16,8 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class PersonelleRessource implements Serializable{
-	
+public class PersonelleRessource implements Serializable {
+
 	/**
 	 * 
 	 */
@@ -26,11 +26,52 @@ public class PersonelleRessource implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+
 	private Kostenart kostenart;
 	private BigDecimal kostenSoll;
 	private BigDecimal kostenIst;
 	private String abweichung;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Kostenart getKostenart() {
+		return kostenart;
+	}
+
+	public void setKostenart(Kostenart kostenart) {
+		this.kostenart = kostenart;
+	}
+
+	public BigDecimal getKostenSoll() {
+		return kostenSoll;
+	}
+
+	public void setKostenSoll(BigDecimal kostenSoll) {
+		this.kostenSoll = kostenSoll;
+	}
+
+	public BigDecimal getKostenIst() {
+		return kostenIst;
+	}
+
+	public void setKostenIst(BigDecimal kostenIst) {
+		this.kostenIst = kostenIst;
+	}
+
+	public String getAbweichung() {
+		return abweichung;
+	}
+
+	public void setAbweichung(String abweichung) {
+		this.abweichung = abweichung;
+	}
+
 	
 
 }

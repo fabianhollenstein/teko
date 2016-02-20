@@ -190,6 +190,9 @@
 	<ui:insert name="javascripts">
 			<!-- jQuery -->
 		<h:outputScript name="js/jquery.js" target="head"/>
+		<h:outputScript target="head">
+        $ = jQuery;
+    </h:outputScript>
 		<!-- Bootstrap Core JavaScript -->
 		<h:outputScript name="js/moment.js" target="head"/>
 		<h:outputScript name="js/bootstrap.js" target="head"/>
@@ -203,9 +206,19 @@
 			target="head" />
 		<h:outputScript name="js/plugins/morris/morris-data.js"
 			target="head" />
+			 <h:outputScript name="js/datepickerProjekt.js"
+			target="body" />
 			
 	</ui:insert>
-	<ui:insert name="extraJavascripts"></ui:insert>
+	<ui:insert name="extraJavascripts">
+<!-- 	<script type="text/javascript">
+	$( document ).ready(function() {
+				$('#bewilligungsdatumpicker').datetimepicker();
+				$('#startdatumsollpicker').datetimepicker();
+				$('#enddatumsollpicker').datetimepicker();
+			});
+	</script> -->
+		</ui:insert>
 	</div>
 </h:body>
 </html>

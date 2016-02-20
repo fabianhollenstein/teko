@@ -20,6 +20,12 @@ import javax.persistence.OneToMany;
 @Entity
 public class Aktivitaet implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5648754785256529536L;
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
