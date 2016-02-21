@@ -35,6 +35,8 @@ public class ProjektService {
 			projekt.setVorgehensmodell(vorgehensmodell);
 		}
 		
+		projekt.setStatus("" + formProjekt.getStatus());
+		
 		//TODO add all Files to save in DB
 		
 		

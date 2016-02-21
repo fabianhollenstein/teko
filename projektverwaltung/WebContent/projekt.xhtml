@@ -78,8 +78,10 @@
                                         		</div>
                                         		<div class="form-group" >
 	                                            	<label>Status</label>
-	                                            	<h:inputText id="status" value="#{formProjekt.projekt.status}" styleClass="form-control" required="false" requiredMessage="Bitte Status eingeben"/>
-										
+	                                            	
+													<h:selectOneMenu value="#{formProjekt.status}" styleClass="form-control">
+														<f:selectItems value="#{formProjekt.projektstatuse}" var="projektstatus" itemLabel="#{projektstatus.statusAsString}" itemValue="#{projektstatus.status}"/>
+													</h:selectOneMenu>
 													<!-- <div class="">
 														<h:message style="display:block;" for="status" errorClass="alert alert-danger"/>
 													</div> -->

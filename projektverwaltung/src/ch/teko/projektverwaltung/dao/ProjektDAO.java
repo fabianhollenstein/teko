@@ -35,9 +35,9 @@ public class ProjektDAO implements BaseDAO<Projekt> {
 	@Override
 	public void save(Projekt projekt) {
 
-		Projekt existingMitarbeiter = entityManager.find(Projekt.class, projekt.getId());
+		Projekt existingProjekt = entityManager.find(Projekt.class, projekt.getId());
 		entityManager.getTransaction().begin();
-		if (existingMitarbeiter != null) {
+		if (existingProjekt != null) {
 			// update
 			entityManager.merge(projekt);
 		} else {

@@ -3,6 +3,10 @@
  */
 package ch.teko.projektverwaltung.model;
 
+import java.util.Arrays;
+import java.util.EnumSet;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -13,6 +17,11 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class FormProjekt {
+	
+	public FormProjekt() {
+		projektstatuse = Arrays.asList(Projektstatus.class.getEnumConstants());
+	
+	}
 	
 	//TODO the File have to be here, when you save projekt check the file and add it to the projekt in projektSErvice class
 	private int mitarbeiterId;
@@ -25,8 +34,16 @@ public class FormProjekt {
 	}
 	
 	public void setProjekt(Projekt projekt) {
-		this.mitarbeiterId = projekt.getProjektleiter().getId();
-		this.vorgehensmodellId = projekt.getVorgehensmodell().getId();
+		if(projekt.getProjektleiter() != null) {
+			this.mitarbeiterId = projekt.getProjektleiter().getId();
+		}
+		if(projekt.getVorgehensmodell() != null) {
+			this.vorgehensmodellId = projekt.getVorgehensmodell().getId();
+		}
+		if(projekt.getStatus() != null) {
+			this.status = Integer.parseInt(projekt.getStatus());
+		}
+		
 		this.projekt = projekt;
 	}
 
@@ -44,6 +61,23 @@ public class FormProjekt {
 
 	public void setVorgehensmodellId(int vorgehensmodellId) {
 		this.vorgehensmodellId = vorgehensmodellId;
+	}
+	
+	
+private int status;
+	
+	private List<Projektstatus> projektstatuse;
+	
+	public List<Projektstatus> getProjektstatuse() {
+		return projektstatuse;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 	
