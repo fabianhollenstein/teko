@@ -27,7 +27,7 @@ public class PersonelleRessource implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	private Kostenart kostenart;
+	private Funktion funktion;
 	private BigDecimal kostenSoll;
 	private BigDecimal kostenIst;
 	private String abweichung;
@@ -40,13 +40,6 @@ public class PersonelleRessource implements Serializable {
 		this.id = id;
 	}
 
-	public Kostenart getKostenart() {
-		return kostenart;
-	}
-
-	public void setKostenart(Kostenart kostenart) {
-		this.kostenart = kostenart;
-	}
 
 	public BigDecimal getKostenSoll() {
 		return kostenSoll;
@@ -70,6 +63,14 @@ public class PersonelleRessource implements Serializable {
 
 	public void setAbweichung(String abweichung) {
 		this.abweichung = abweichung;
+	}
+
+	public Funktion getFunktion() {
+		return funktion;
+	}
+
+	public void setFunktion(Funktion funktion) {
+		this.funktion = funktion;
 	}
 
 	

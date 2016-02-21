@@ -36,9 +36,10 @@ public class Aktivitaet implements Serializable{
 	private Date startdatumIst;
 	private Date enddatumIst;
 	private Mitarbeiter verantwortlichePerson;
-	private PersonelleRessource personelleResource;
-	
-	private ExterneKosten externeKosten;
+	@OneToMany
+	private List<PersonelleRessource> personelleResourcen;
+	@OneToMany
+	private List<ExterneKosten> externeKosten;
 
 	
 	

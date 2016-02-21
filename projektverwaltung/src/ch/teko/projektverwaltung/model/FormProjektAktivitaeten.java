@@ -3,23 +3,22 @@
  */
 package ch.teko.projektverwaltung.model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.EnumSet;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
+import javax.faces.bean.SessionScoped;
 
 /**
  * @author Fabian
  * Class is used for Formular
  */
 @ManagedBean
-@ViewScoped
-public class FormProjekt {
+@SessionScoped
+public class FormProjektAktivitaeten {
 	
-	public FormProjekt() {
+	public FormProjektAktivitaeten() {
 		projektstatuse = Arrays.asList(Projektstatus.class.getEnumConstants());
 	
 	}
@@ -44,6 +43,15 @@ public class FormProjekt {
 		if(projekt.getStatus() != null) {
 			this.status = Integer.parseInt(projekt.getStatus());
 		}
+		List<Projektphase> projektphasen = new ArrayList<Projektphase>();
+		Vorgehensmodell vorgehensmodell = projekt.getVorgehensmodell();
+		for(Phase phase: vorgehensmodell.getPhasen()){
+			Projektphase projektphase = new Projektphase();
+			projektphase.setName(phase.getName());
+			projektphasen.add(projektphase);
+		}
+		projekt.setProjektphasen(projektphasen);
+		
 		
 		this.projekt = projekt;
 	}
@@ -65,7 +73,7 @@ public class FormProjekt {
 	}
 	
 	
-private int status;
+	private int status;
 	
 	private List<Projektstatus> projektstatuse;
 	
@@ -81,8 +89,11 @@ private int status;
 		this.status = status;
 	}
 	
-	public void sendProjekt() {
-		FacesContext facesContext = FacesContext.getCurrentInstance();
+	public String sendProjekt(Projekt projekt) {
+		this.projekt = projekt;
+		return Navigation.PROJEKTAKTIVITAETEN_VIEW;
+		
+//		FacesContext facesContext = FacesContext.getCurrentInstance();
 		
 		
 	}
