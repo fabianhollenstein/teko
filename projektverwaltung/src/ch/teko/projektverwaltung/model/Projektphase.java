@@ -9,7 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
+/**
+ * Model Klasse
+ * @author Fabian
+ *
+ */
 @Entity
 public class Projektphase implements Serializable{
 	/**
@@ -115,15 +119,11 @@ public class Projektphase implements Serializable{
 	
 	private Date freigabedatum;
 	
-	//TODO
 	private String visum;
 	
 	private int phasenstatus;
 	private int phasenfortschritt;
 	
-	
-	//TODO links as Object (id, path)
-//	private List<String> links;
 	
 	@OneToMany
 	private List<Aktivitaet> aktivitaeten;

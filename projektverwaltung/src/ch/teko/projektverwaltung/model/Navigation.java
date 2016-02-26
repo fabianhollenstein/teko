@@ -4,6 +4,7 @@
 package ch.teko.projektverwaltung.model;
 
 /**
+ * Alle Views der Applikation sind hier definiert
  * @author Fabian
  *
  */

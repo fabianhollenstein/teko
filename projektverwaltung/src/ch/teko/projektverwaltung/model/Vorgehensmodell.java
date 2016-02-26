@@ -13,7 +13,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
+/**
+ * Model Klasse
+ * @author Fabian
+ *
+ */
 @Entity
 public class Vorgehensmodell implements Serializable{
 	/**

@@ -4,6 +4,7 @@
 package ch.teko.projektverwaltung.model;
 
 /**
+ * Helfer Klasse um Status zu setzen, wird als Dropdown dargestellt, in der DB sind die Werte 0-2 abgelegt
  * @author Fabian
  *
  */

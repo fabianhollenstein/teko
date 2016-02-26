@@ -9,7 +9,12 @@ import ch.teko.projektverwaltung.dao.VorgehensmodellDAO;
 import ch.teko.projektverwaltung.model.FormVorgehensmodell;
 import ch.teko.projektverwaltung.model.Navigation;
 import ch.teko.projektverwaltung.model.Vorgehensmodell;
-
+/**
+ * Schnittstelle vom GUI zur DAO Schicht
+ * Alle Aktionen welche mit der Datenbank in Verbindungstehen und dieses Objekt betreffen
+ * @author Fabian
+ *
+ */
 @ManagedBean()
 @RequestScoped
 public class VorgehensmodellService {

@@ -3,9 +3,6 @@
  */
 package ch.teko.projektverwaltung.model;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.Serializable;
 import java.net.URL;
 
@@ -13,13 +10,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.servlet.http.Part;
 
 /**
+ * Model Klasse
  * @author Fabian
  *
  */
+ 
 @Entity
 public class Link implements Serializable {
 
@@ -31,19 +28,7 @@ public class Link implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-
-//	@Lob
-//	private byte[] file;
-//	public byte[] getFile() {
-//		return file;
-//	}
-//
-//	public void setFile(byte[] file) {
-//		this.file = file;
-//	}
-
 	
-//	private Part part;
 	private String link;
 	private URL url;
 

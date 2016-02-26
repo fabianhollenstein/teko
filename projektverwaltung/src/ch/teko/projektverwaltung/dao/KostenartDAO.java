@@ -13,6 +13,7 @@ import javax.persistence.Query;
 import ch.teko.projektverwaltung.model.Kostenart;
 
 /**
+ * Verbindung Zur DB, hier werden die Queries abgesetzt
  * @author Fabian
  *
  */

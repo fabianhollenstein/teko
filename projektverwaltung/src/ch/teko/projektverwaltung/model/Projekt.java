@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
+ * Model Klasse
  * @author Fabian
  *
  */
@@ -38,7 +39,7 @@ public class Projekt implements Serializable{
 	private String status;
 	private Date startdatumSoll;
 	private Date enddatumSoll;
-	//TODO erst beim bearbeiten hinzufügen
+	
 	private Date startdatumIst;
 	private Date enddatumIst;
 	
@@ -55,7 +56,7 @@ public class Projekt implements Serializable{
 		links = new ArrayList<Link>();
 		links.add(new Link());
 	}
-	//TODO if 
+	
 	@OneToMany
 	private List<Projektphase> projektphasen;
 

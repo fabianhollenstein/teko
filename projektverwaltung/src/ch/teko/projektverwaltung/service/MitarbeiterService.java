@@ -11,7 +11,12 @@ import ch.teko.projektverwaltung.model.FormMitarbeiter;
 import ch.teko.projektverwaltung.model.Funktion;
 import ch.teko.projektverwaltung.model.Mitarbeiter;
 import ch.teko.projektverwaltung.model.Navigation;
-
+/**
+ * Schnittstelle vom GUI zur DAO Schicht
+ * Alle Aktionen welche mit der Datenbank in Verbindungstehen und dieses Objekt betreffen
+ * @author Fabian
+ *
+ */
 @ManagedBean()
 @RequestScoped
 public class MitarbeiterService {

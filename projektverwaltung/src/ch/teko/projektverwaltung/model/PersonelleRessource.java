@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
+ * Model Klasse
  * @author Fabian
  *
  */

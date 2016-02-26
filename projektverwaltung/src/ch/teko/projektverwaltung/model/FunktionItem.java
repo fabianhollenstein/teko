@@ -4,7 +4,11 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
+/**
+ * Helfer Klasse für Dorpbdown box
+ * @author Fabian
+ *
+ */
 @ManagedBean
 @ViewScoped
 public class FunktionItem implements Serializable{

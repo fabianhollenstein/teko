@@ -30,8 +30,86 @@ public class ExterneKosten implements Serializable{
 	private BigDecimal kostenSoll;
 	private BigDecimal kostenIst;
 	
-	//TODO abweichung ist ja die abweichung zwischen  kosten sol/ist
-	//jetzt braucht abe  die Abweichung noch einent Grund
-	//erstelle Objekt Abweichung mit int abweichung und String begründung
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	/**
+	 * @return the kostenart
+	 */
+	public Kostenart getKostenart() {
+		return kostenart;
+	}
+
+
+	/**
+	 * @param kostenart the kostenart to set
+	 */
+	public void setKostenart(Kostenart kostenart) {
+		this.kostenart = kostenart;
+	}
+
+
+	/**
+	 * @return the kostenSoll
+	 */
+	public BigDecimal getKostenSoll() {
+		return kostenSoll;
+	}
+
+
+	/**
+	 * @param kostenSoll the kostenSoll to set
+	 */
+	public void setKostenSoll(BigDecimal kostenSoll) {
+		this.kostenSoll = kostenSoll;
+	}
+
+
+	/**
+	 * @return the kostenIst
+	 */
+	public BigDecimal getKostenIst() {
+		return kostenIst;
+	}
+
+
+	/**
+	 * @param kostenIst the kostenIst to set
+	 */
+	public void setKostenIst(BigDecimal kostenIst) {
+		this.kostenIst = kostenIst;
+	}
+
+
+	/**
+	 * @return the abweichung
+	 */
+	public String getAbweichung() {
+		return abweichung;
+	}
+
+
+	/**
+	 * @param abweichung the abweichung to set
+	 */
+	public void setAbweichung(String abweichung) {
+		this.abweichung = abweichung;
+	}
+
+
 	private String abweichung;
 }

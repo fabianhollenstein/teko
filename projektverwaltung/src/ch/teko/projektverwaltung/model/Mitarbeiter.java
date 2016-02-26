@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 /**
+ * Model Klasse
  * @author Fabian
  *
  */

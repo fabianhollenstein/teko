@@ -8,7 +8,11 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import ch.teko.projektverwaltung.model.Vorgehensmodell;
-
+/**
+ * Verbindung Zur DB, hier werden die Queries abgesetzt
+ * @author Fabian
+ *
+ */
 public class VorgehensmodellDAO implements BaseDAO<Vorgehensmodell> {
 	private EntityManagerFactory factory;
 	private EntityManager entityManager;

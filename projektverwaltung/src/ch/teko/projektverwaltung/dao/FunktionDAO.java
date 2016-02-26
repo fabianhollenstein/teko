@@ -13,6 +13,7 @@ import javax.persistence.Query;
 import ch.teko.projektverwaltung.model.Funktion;
 
 /**
+ * Verbindung Zur DB, hier werden die Queries abgesetzt
  * @author Fabian
  *
  */

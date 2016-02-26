@@ -8,7 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-//TODO how to use Meilenstein?
+/**
+ * Model Klasse
+ * @author Fabian
+ *
+ */
 @Entity
 public class Meilenstein implements Serializable{
 	/**

@@ -10,6 +10,12 @@ import ch.teko.projektverwaltung.model.FormFunktion;
 import ch.teko.projektverwaltung.model.Funktion;
 import ch.teko.projektverwaltung.model.Navigation;
 
+/**
+ * Schnittstelle vom GUI zur DAO Schicht
+ * Alle Aktionen welche mit der Datenbank in Verbindungstehen und dieses Objekt betreffen
+ * @author Fabian
+ *
+ */
 @ManagedBean()
 @RequestScoped
 public class FunktionService {

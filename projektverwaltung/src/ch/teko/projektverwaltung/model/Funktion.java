@@ -7,6 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Model Klasse
+ * @author Fabian
+ *
+ */
 @Entity
 public class Funktion implements Serializable{
 	/**
