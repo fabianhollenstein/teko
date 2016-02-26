@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.1.9" icons="true">  
+  <object id="1" language="java" name="ch.teko.projektverwaltung.service.ProjektService" project="projektverwaltung" 
+    file="/projektverwaltung/src/ch/teko/projektverwaltung/service/ProjektService.java" binary="false" 
+    label="projektService" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="138" y="0"/>    
+    <execution id="2">      
+      <position height="202" width="148" x="5" y="111"/>    
+    </execution>    
+    <execution id="5">      
+      <position height="21" width="148" x="5" y="229"/>    
+    </execution>  
+  </object>  
+  <object id="6" language="java" name="ch.teko.projektverwaltung.dao.ProjektDAO" project="projektverwaltung" 
+    file="/projektverwaltung/src/ch/teko/projektverwaltung/dao/ProjektDAO.java" binary="false" label="projektDAO" 
+    type="class" autoSize="true">    
+    <position height="-1" width="-1" x="303" y="0"/>    
+    <execution id="4">      
+      <position height="160" width="132" x="157" y="132"/>    
+    </execution>  
+  </object>  
+  <object id="9" language="java" name="javax.persistence.EntityManager" project="projektverwaltung" 
+    file="C:/Users/Fabian/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar" 
+    binary="true" label="entityManager" type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="8">      
+      <position height="118" width="0" x="0" y="153"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="getById(int):ch.teko.projektverwaltung.model.Projekt" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="7" operation="find(java.lang.Class&lt;T&gt;,java.lang.Object):T" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="10" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </message>
+</sequence-diagram>
